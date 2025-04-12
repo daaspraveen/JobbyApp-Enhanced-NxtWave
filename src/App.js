@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, Navigate } from 'react-router-dom'
+import ProtectedRoute from './Components/ProtectedRoute'
+import Login from './Components/Login'
+import Home from './Components/Home'
+import Jobs from './Components/Jobs'
+import JobItemDetails from './Components/JobItemDetails'
+import NotFound from './Components/NotFound'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import './App.css'
 
-export default App;
+const App = () => (
+  <Routes>
+    <Route path="/login" element={<Login />} />
+    <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+    <Route path="/jobs" element={<ProtectedRoute><Jobs /></ProtectedRoute>} />
+    <Route path="/jobs/:id" element={<ProtectedRoute><JobItemDetails /></ProtectedRoute>} />
+    <Route path="/not-found" element={<NotFound />} />
+    <Route path="*" element={<Navigate to="/not-found" replace />} />
+  </Routes>
+)
+
+export default App
