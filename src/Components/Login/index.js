@@ -6,8 +6,8 @@ import "./index.css";
 const Login = () => {
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("rahul");
+  const [password, setPassword] = useState("rahul@2021");
   const [errorPara, setErrorPara] = useState("");
 
   const cookieData = Cookies.get("jwt_token");
